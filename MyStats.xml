@@ -1,0 +1,295 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+<!--
+	Go to the ReadMe file (MyStats/ReadMe/ReadMe.txt) for version history,
+	contact information, further help and information
+-->
+	<Script file="localization.lua" />
+	<Script file="MyStats.lua" />
+	
+	<Frame 	name="MyStatsMainFrame"
+			parent="UIParent"
+			enableMouse="true"
+			movable="true">
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+		<Size>
+			<AbsDimension x="135" y="240" />
+		</Size>
+		<Backdrop	bgFile="Interface\Tooltips\UI-Tooltip-Background"
+					edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+					tile="true">
+			<EdgeSize>
+				<AbsValue val="16" />
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16" />
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="4" right="3" top="4" bottom="3" />
+			</BackgroundInsets>
+			<Color r="0.2" g="0.2" b="0.2" a="0.7" />
+		</Backdrop>
+		
+		<Frames>
+			<Button name="$parent_CloseButton">
+				<Size>
+					<AbsDimension x="30" y="30" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="-3" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\Minimap\TRACKING\OBJECTICONS">
+					<TexCoords left="0.25" right="0.375" top="0" bottom="0.5" />
+				</NormalTexture>
+				<HighlightTexture file="Interface\Minimap\TRACKING\OBJECTICONS">
+					<TexCoords left="0.625" right="0.75" top="0" bottom="0.5" />
+				</HighlightTexture>
+				<PushedTexture file="Interface\Minimap\TRACKING\OBJECTICONS">
+					<TexCoords left="0.75" right="0.875" top="0" bottom="0.5" />
+				</PushedTexture>
+				<Scripts>
+					<OnClick>
+						MyStatsMainFrame_CloseButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_RefreshButton">
+				<Size>
+					<AbsDimension x="30" y="30" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="3" y="-3" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\Minimap\TRACKING\OBJECTICONS">
+					<TexCoords left="0" right="0.125" top="0" bottom="0.5" />
+				</NormalTexture>
+				<HighlightTexture file="Interface\Minimap\TRACKING\OBJECTICONS">
+					<TexCoords left="0.125" right="0.25" top="0" bottom="0.5" />
+				</HighlightTexture>
+				<Scripts>
+					<OnClick>
+						MyStatsMainFrame_RefreshButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_StrengthTxt"
+							inherits="SystemFont_Small"
+							text="Str:"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="5" y="-40" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_AgilityTxt"
+							inherits="SystemFont_Small"
+							text="Agi:"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_StrengthTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_StaminaTxt"
+							inherits="SystemFont_Small"
+							text="Sta:"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_AgilityTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_IntellectTxt"
+							inherits="SystemFont_Small"
+							text="Int:"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_StaminaTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_SpiritTxt"
+							inherits="SystemFont_Small"
+							text="Spr:"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_IntellectTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_ArmorTxt"
+							inherits="SystemFont_Small"
+							text="Armr:"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_SpiritTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_CombatTxt"
+							inherits="SystemFont_Small"
+							text="Not In Combat"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_ArmorTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_DamageTxt"
+							inherits="SystemFont_Small"
+							text="Dmg Taken: 0"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_CombatTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_DpsTxt"
+							inherits="SystemFont_Small"
+							text="Dps Taken: 0.00"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_DamageTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+				<FontString name="$parent_TimeTxt"
+							inherits="SystemFont_Small"
+							text="Time: 0 seconds"
+							justifyV="CENTER"
+							justifyH="CENTER">
+					<Size>
+						<AbsDimension x="0" y="10" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"
+								relativeTo="$parent_DpsTxt"
+								relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="0" a="1" />
+				</FontString>
+			</Layer>
+		</Layers>
+		
+		<Scripts>
+			<OnLoad>
+				MyStatsMainFrame_OnLoad()
+			</OnLoad>
+			<OnEvent>
+				MyStatsMainFrame_OnEvent(self, event, ...)
+			</OnEvent>
+			<OnMouseDown>
+				MyStatsMainFrame_OnMouseDown()
+			</OnMouseDown>
+			<OnMouseUp>
+				MyStatsMainFrame_OnMouseUp()
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+</Ui>

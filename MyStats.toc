@@ -1,0 +1,9 @@
+## Interface: 30100
+## Title: MyStats
+## Author: WildCat-Man
+## Notes: A simple AddOn that displays character's stats, stat changes, and combat stats.
+## Version: 1.0 (BETA 1.2)
+
+localization.lua
+MyStats.lua
+MyStats.xml
